@@ -2,7 +2,7 @@
     "name": "maxpack.defaultinputsystem",
     "version": "1.0.0",
     "displayName": "MaxPack - Default input system",
-    "description": "This is a package to generate custom procedural dungeon.",
+    "description": "This is a package to setup basic input.",
     "unity": "2022.3",
     "author": {
         "name": "Gillot Maxime",
