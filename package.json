@@ -1,0 +1,23 @@
+{
+    "name": "maxpack.defaultinputsystem",
+    "version": "1.0.0",
+    "displayName": "MaxPack - Default input system",
+    "description": "This is a package to generate custom procedural dungeon.",
+    "unity": "2022.3",
+    "author": {
+        "name": "Gillot Maxime",
+        "email": "max.gillot@cpe.fr"
+    },
+    "samples": [
+        {
+            "displayName": "Demo samples",
+            "description": "Contains demo assets",
+            "path": "Demo~"
+        },
+        {
+            "displayName": "Temp Demo samples",
+            "description": "Contains demo assets",
+            "path": "Demo"
+        }
+    ]
+}
