@@ -13,13 +13,14 @@ public class InputGlobalManager : MonoBehaviour
     private InputAction m_lookAction;
     private InputAction m_attackAction;
     private InputAction m_interactAction;
+    private InputAction m_sprintAction;
     private InputAction m_crouchAction;
     private InputAction m_jumpAction;
     private InputAction m_pauseActionPlayer;
     private InputAction m_pauseActionUI;
 
-    public Vector2 m_moveAmt;
-    public Vector2 m_lookAmt;
+    public Vector2 moveAmt;
+    public Vector2 lookAmt;
 
     public float mouseSensibility = 5;
 
@@ -45,8 +46,10 @@ public class InputGlobalManager : MonoBehaviour
         m_lookAction = InputSystem.actions.FindAction("Look");
         m_attackAction = InputSystem.actions.FindAction("Attack");
         m_interactAction = InputSystem.actions.FindAction("Interact");
+        m_sprintAction = InputSystem.actions.FindAction("Sprint");
         m_crouchAction = InputSystem.actions.FindAction("Crouch");
         m_jumpAction = InputSystem.actions.FindAction("Jump");
+
 
         m_pauseActionPlayer = InputSystem.actions.FindAction("Player/Pause");
         m_pauseActionUI = InputSystem.actions.FindAction("UI/Pause");
@@ -55,13 +58,23 @@ public class InputGlobalManager : MonoBehaviour
 
     private void Update()
     {
-        m_moveAmt = m_moveAction.ReadValue<Vector2>();
-        m_lookAmt = m_lookAction.ReadValue<Vector2>() * mouseSensibility;
+        moveAmt = m_moveAction.ReadValue<Vector2>();
+        lookAmt = m_lookAction.ReadValue<Vector2>() * mouseSensibility;
     }
 
     void LateUpdate()
     {
         m_attackInputWasHeld = GetAttackInputHeld();
+    }
+
+    public bool GetSprint()
+    {
+        return m_sprintAction.IsPressed();
+    }
+
+    public bool GetJump()
+    {
+        return m_jumpAction.IsPressed();
     }
 
     public bool GetAttackInputDown()
@@ -85,7 +98,7 @@ public class InputGlobalManager : MonoBehaviour
         //return false;
     }
 
-    public void SetCursorState(bool newState)
+    public void SetCursorLock(bool newState)
     {
         Cursor.lockState = newState ? CursorLockMode.Locked : CursorLockMode.None;
     }
